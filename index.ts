@@ -27,7 +27,11 @@ app.get('/', (req, res) => {
 
 })
 app.all(/([A-z]|[0-9])/g, (req, res) => {
-    res.send("page not found")
+    res.redirect("/not_found")
+})
+app.get("/not_found", (req, res) => {
+    res.status(404)
+    res.render("not_found")
 })
 appSSl.listen(443, () => {
     console.log("servar satrting in port 443");
